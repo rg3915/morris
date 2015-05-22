@@ -1,0 +1,27 @@
+<!-- Menu -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'index' %}">Morris</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{% url 'morris' %}">Gráficos</a></li>
+        <li><a href="{% url 'morris_data' %}">Gráficos com dados</a></li>
+        <li><a href="{% url 'persons_by_uf' %}">Gráficos com Django</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'download' %}"><span class="glyphicon glyphicon-download-alt"></span> Download</a></li>
+        <li><a href="{% url 'about' %}"><span class="glyphicon glyphicon-exclamation-sign"></span> Sobre</a></li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+

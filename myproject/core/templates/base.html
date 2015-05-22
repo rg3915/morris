@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  {% load static from staticfiles %}
+
+  <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+  <link rel="stylesheet" href="{% static "css/morris.css" %}">
+
+  <script src="{% static "js/jquery.min.js" %}"></script>
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+  <script src="{% static "js/raphael-min.js" %}"></script>
+  <script src="{% static "js/morris.js" %}"></script>
+
+  <style>
+    body {
+      padding-top: 70px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  {% include 'menu.html' %}
+
+  {% block content %}
+
+  {% endblock content %}
+
+  {% block js %}
+    
+  {% endblock js %}
+
+</body>
+</html>
+

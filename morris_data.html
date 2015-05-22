@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="myproject/core/static/css/bootstrap.css">
+  <link rel="stylesheet" href="myproject/core/static/css/morris.css">
+
+  <script src="myproject/core/static/js/jquery.min.js"></script>
+  <script src="myproject/core/static/js/bootstrap.min.js"></script>
+  <script src="myproject/core/static/js/raphael-min.js"></script>
+  <script src="myproject/core/static/js/morris.js"></script>
+
+  <style>
+    body {
+      padding-top: 70px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<!-- Menu -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Morris</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="morris.html">Gráficos</a></li>
+        <li><a href="morris_data.html">Gráficos com dados</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="download.html"><span class="glyphicon glyphicon-download-alt"></span> Download</a></li>
+        <li><a href="about.html"><span class="glyphicon glyphicon-exclamation-sign"></span> Sobre</a></li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+    
+    <p class="alert alert-warning">Esta página não usa Django.</p>
+
+	<div class="row clearfix">
+		 <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Donut Chart Example
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="col-lg-4">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Label</th>
+                                    <th class="text-center">Value</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>verde</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr>
+                                    <td>laranja</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr>
+                                    <td>azul</td>
+                                    <td>20</td>
+                                </tr>
+                                <tr>
+                                    <td>amarelo</td>
+                                    <td>30</td>
+                                </tr>
+                                <tr>
+                                    <td>roxo</td>
+                                    <td>16</td>
+                                </tr>
+                                <tr>
+                                    <td>vermelho</td>
+                                    <td>14</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="donutchart" class="col-lg-6" style="height: 250px;"></div>
+                </div>
+            </div>
+        </div>
+		 <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Line Chart Example
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="col-lg-4">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Period</th>
+                                    <th class="text-center">Licensed</th>
+                                    <th class="text-center">Sorned</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>2015-10-01</td>
+                                    <td>3407</td>
+                                    <td>660</td>
+                                </tr>
+                                <tr>
+                                    <td>2015-09-30</td>
+                                    <td>3351</td>
+                                    <td>629</td>
+                                </tr>
+                                <tr>
+                                    <td>2015-09-29</td>
+                                    <td>3269</td>
+                                    <td>618</td>
+                                </tr>
+                                <tr>
+                                    <td>2015-09-25</td>
+                                    <td>4500</td>
+                                    <td>1000</td>
+                                </tr>
+                                <tr>
+                                    <td>2015-09-20</td>
+                                    <td>3746</td>
+                                    <td>661</td>
+                                </tr>
+                                <tr>
+                                    <td>2015-09-19</td>
+                                    <td>3957</td>
+                                    <td>667</td>
+                                </tr>
+                                <tr>
+                                    <td>2015-09-18</td>
+                                    <td>3600</td>
+                                    <td>627</td>
+                                </tr>
+                                <tr>
+                                    <td>2015-09-17</td>
+                                    <td>2571</td>
+                                    <td>660</td>
+                                </tr>
+                                <tr>
+                                    <td>2015-09-16</td>
+                                    <td>3171</td>
+                                    <td>676</td>
+                                </tr>
+                                <tr>
+                                    <td>2015-09-15</td>
+                                    <td>1201</td>
+                                    <td>300</td>
+                                </tr>
+                                <tr>
+                                    <td>2015-09-10</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="graph" class="col-lg-6" style="height: 250px;"></div>
+                </div>
+            </div>
+        </div>
+		 <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Bar Chart Example
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="col-lg-4">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">y</th>
+                                    <th class="text-center">Series A</th>
+                                    <th class="text-center">Series B</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>2009</td>
+                                    <td>100</td>
+                                    <td>90</td>
+                                </tr>
+                                <tr>
+                                    <td>2010</td>
+                                    <td>75</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>2011</td>
+                                    <td>50</td>
+                                    <td>40</td>
+                                </tr>
+                                <tr>
+                                    <td>2012</td>
+                                    <td>75</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>2013</td>
+                                    <td>50</td>
+                                    <td>40</td>
+                                </tr>
+                                <tr>
+                                    <td>2014</td>
+                                    <td>75</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>2015</td>
+                                    <td>100</td>
+                                    <td>90</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="barchart" class="col-lg-6" style="height: 250px;"></div>
+                </div>
+            </div>
+        </div>
+		 <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Area Chart Example
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="col-lg-4">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Period</th>
+                                    <th class="text-center">iphone</th>
+                                    <th class="text-center">ipad</th>
+                                    <th class="text-center">itouch</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>2013 Q1</td>
+                                    <td>2666</td>
+                                    <td>null</td>
+                                    <td>2647</td>
+                                </tr>
+                                    <td>2013 Q2</td>
+                                    <td>2778</td>
+                                    <td>2294</td>
+                                    <td>2441</td>
+                                </tr>
+                                    <td>2013 Q3</td>
+                                    <td>4912</td>
+                                    <td>1969</td>
+                                    <td>2501</td>
+                                </tr>
+                                    <td>2013 Q4</td>
+                                    <td>3767</td>
+                                    <td>3597</td>
+                                    <td>5689</td>
+                                </tr>
+                                    <td>2014 Q1</td>
+                                    <td>6810</td>
+                                    <td>1914</td>
+                                    <td>2293</td>
+                                </tr>
+                                    <td>2014 Q2</td>
+                                    <td>5670</td>
+                                    <td>4293</td>
+                                    <td>1881</td>
+                                </tr>
+                                    <td>2014 Q3</td>
+                                    <td>4820</td>
+                                    <td>3795</td>
+                                    <td>1588</td>
+                                </tr>
+                                    <td>2014 Q4</td>
+                                    <td>15073</td>
+                                    <td>5967</td>
+                                    <td>5175</td>
+                                </tr>
+                                    <td>2015 Q1</td>
+                                    <td>10687</td>
+                                    <td>4460</td>
+                                    <td>2028</td>
+                                </tr>
+                                    <td>2015 Q2</td>
+                                    <td>8432</td>
+                                    <td>5713</td>
+                                    <td>1791</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="areachart" class="col-lg-6" style="height: 250px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="myproject/core/static/js/data.js"></script>
+
+</body>
+</html>
