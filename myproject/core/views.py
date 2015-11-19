@@ -1,4 +1,8 @@
+import json
+from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.views.generic import TemplateView
 from .models import Person
 from django.db.models import Count
@@ -22,6 +26,14 @@ def morris(request):
 
 def morris_dataview(request):
     return render(request, "core/morris_data.html")
+
+
+def uf_json(request):
+    data = Person.objects.values('uf').annotate(
+        quant=Count('uf')).order_by('uf').values('uf', 'quant')
+    s = json.dumps(list(data), cls=DjangoJSONEncoder)
+    # s = serializers.serialize('json', data, fields=('uf', 'quant'))
+    return HttpResponse(s)
 
 
 class PersonsUFView(TemplateView):

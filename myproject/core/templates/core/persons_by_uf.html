@@ -229,13 +229,31 @@
 {% block js %}
 
 	<script type="text/javascript">
+        var json = (function(){
+            var json = null;
+            $.ajax({
+                async: false,
+                global: false,
+                url: "{% url 'uf_json' %}",
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    json = data;
+                    console.log(json);
+                }
+            });
+            return json;
+        });
+        console.log(json + "here");
+
         Morris.Bar({
             element: 'barchart',
-            data: [
+            data: json,
+            /* data: [
                 {% for item in itens %}
                     { uf: '{{ item.uf }}', quant:  {{ item.quant }} },
                 {% endfor %}
-            ],
+            ], */
             xkey: 'uf',
             ykeys: ['quant'],
             labels: ['quant'],

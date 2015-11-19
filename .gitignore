@@ -55,3 +55,10 @@ docs/_build/
 
 # PyBuilder
 target/
+
+*.sqlite3
+myproject/db.sqlite3
+
+bin/
+include/
+myproject/core/migrations/
