@@ -228,53 +228,59 @@
 
 {% block js %}
 
-	<script type="text/javascript">
-        var json = (function(){
-            var json = null;
-            $.ajax({
-                async: false,
-                global: false,
-                url: "{% url 'uf_json' %}",
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    json = data;
-                    console.log(json);
-                }
-            });
-            return json;
+<script type="text/javascript">
+    // Lê os dados, que já estão em json
+    var json = function(callback){
+        var json = null;
+        $.ajax({
+            url: "http://localhost:8000/uf/",
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                json = data;
+                callback(data);
+            }
         });
-        console.log(json + "here");
+        return json;
+    };
 
+    // Gera o gráfico de barras
+    var grafico = function(dados) {
         Morris.Bar({
             element: 'barchart',
-            data: json,
-            /* data: [
-                {% for item in itens %}
-                    { uf: '{{ item.uf }}', quant:  {{ item.quant }} },
-                {% endfor %}
-            ], */
+            data: dados,
             xkey: 'uf',
             ykeys: ['quant'],
             labels: ['quant'],
             hideHover: 'auto',
             resize: true,
         });
-    </script>
+    };
 
-    <script type="text/javascript">
-        Morris.Donut({
-            element: 'donutchart',
-            data: [
-                {% for gender in genders %}
-                    { label: '{{ gender.gender }}', value:  {{ gender.value }}},
-                {% endfor %}
-            ],
-            colors: [
-              '#FF00FF', // magenta
-              '#0000CD', // azul
-            ],
-            formatter: function (x) { return x + "%"}
-        });
-    </script>
+    // Chamando a função para gerar o gráfico
+    json(grafico);
+
+    // Caso queira imprimir os dados no console
+    /* json(function(json){
+        console.log(json)
+    }); */
+    
+</script>
+
+<script type="text/javascript">
+    Morris.Donut({
+        element: 'donutchart',
+        data: [
+            {% for gender in genders %}
+                { label: '{{ gender.gender }}', value:  {{ gender.value }}},
+            {% endfor %}
+        ],
+        colors: [
+          '#FF00FF', // magenta
+          '#0000CD', // azul
+        ],
+        formatter: function (x) { return x + "%"}
+    });
+</script>
+
 {% endblock js %}
